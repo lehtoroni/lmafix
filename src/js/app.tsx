@@ -63,7 +63,7 @@ export function App() {
         
         <footer className='footer'>
             <div>
-                &copy; Roni Lehto 2026 &middot; <a href="https://lehtodigital.fi/lmath/">L'Math</a> &middot; <a href="https://github.com/lehtoroni/lmafix4" target='_blank'>Source on Github</a>
+                &copy; Roni Lehto 2026 &middot; <a href="https://lehtodigital.fi/lmath/">L'Math</a> &middot; <a href="https://github.com/lehtoroni/lmafix" target='_blank'>Source on Github</a>
             </div>
             <div>
                 This tool works in your browser. No data will be sent to the server.
