@@ -24,7 +24,8 @@ Everyting happens in the browser. Files are never sent to the server. Used libra
 Happy hacking!
 
 ## So how do LMA files work then?
-An incomplete specification of the LMA2 file format can be found on **https://lehtodigital.fi/lmath/guide/articles/lma/**
+An incomplete specification of the LMA2 file format can be found on
+#### **https://lehtodigital.fi/lmath/guide/articles/lma/**
 
 ## Background
 *The* original LMAFix script was just a dirty Node.js script, which extracted a given file using 7z, rebuilt the page index based on valid pages, and zipped it all up again. It was quite useful for partly saved files left after a non-clean shutdown.
@@ -35,21 +36,28 @@ And now, this is the v4 that will probably see daylight!
 
 ## Roadmap-ish
 At the moment, the tool
-- checks if the file could be an LMA file (i.e. has `pages/`)
-- checks if there is an `images/` folder
-- checks if there is a metadata file `worksheet.json`
-- checks if there is a page index `pages.json`
-- checks if metadata is valid JSON
-- checks if page index is valid JSON
-- checks if all indexed pages exist, and if all existing pages are indexed
-- 
-- checks metadata and page list for anything missing or corrupted
-- checks if pages contain valid JSON
-- checks if page content contains certain illegal elements (ie. the math editor box...)
+- validates the LMA file:
+  - checks if the file could be an LMA file (i.e. has `pages/`)
+  - checks if there is an `images/` folder
+  - checks if there is a metadata file `worksheet.json`
+  - checks if there is a page index `pages.json`
+  - checks if metadata is valid JSON
+  - checks if page index is valid JSON
+  - checks if all indexed pages exist, and if all existing pages are indexed
+  - checks if "current page" points to an existing page
+  - checks if all page IDs match to their filenames
+  - checks if page content contains certain illegal elements (ie. the math editor box...)
+- attempts to repair any issues:
+  - rebuilds page index and/or metadata file if necessary
+  - removes illegal saved elements from pages
+  - copies pages & images over to a new file
+  - zips everything up
 
-I also would like the tool to
-- have an "advanced" mode, where you could manipulate some of the data
+TODO:
+- an "advanced" mode, where you could manipulate some of the data
 - handle more and more and more corrupted file cases
+- add some test cases
+- add CLI version? (`lmafix.ts` doesn't care about the environment)
 
 ## Contributing
 If you have the urge to change or add something, create a fork and a pull request. If I don't reply within ...a few months(?), please contact me via email, and I will see if your spaghetti is worth adding to my spaghetti!
